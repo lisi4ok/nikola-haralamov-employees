@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Entities\Employee;
 use App\Http\Requests\CsvUploadRequest;
 use League\Csv\Reader;
-
 
 class PageController extends Controller
 {

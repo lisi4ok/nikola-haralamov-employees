@@ -17,6 +17,4 @@ class Employee extends Model
         'date_from',
         'date_to',
     ];
-
-
 }

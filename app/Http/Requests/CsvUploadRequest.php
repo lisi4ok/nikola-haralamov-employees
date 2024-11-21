@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class CsvUploadRequest extends FormRequest
 {
     /**
@@ -15,7 +14,7 @@ class CsvUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'csvFile' => ['required', 'mimes:csv,txt'],
+            'csvFile' => ['required', 'mimes:csv'],
         ];
     }
 }
