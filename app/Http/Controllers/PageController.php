@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Entities\Employee;
 use App\Http\Requests\CsvUploadRequest;
-use Illuminate\Http\Request;
 use League\Csv\Reader;
 
 
@@ -16,17 +15,17 @@ class PageController extends Controller
         return view('index');
     }
 
-    public function upload(Request $request)
+    public function upload(CsvUploadRequest $request)
     {
         $file = $request->file('csvFile');
-        $header = ['EmpID', 'ProjectID', 'DateFrom', 'DateTo'];
+        $header = ['employeeId', 'projectId', 'dateFrom', 'dateTo'];
         $reader = Reader::createFromPath($file->getRealPath())->mapHeader($header);
         $data = [];
         foreach ($reader as $item) {
             $data[] = new Employee(...$item);
         }
 
-        $data = collect($data)->groupBy('ProjectID');
+        $data = collect($data)->groupBy('projectId');
 
         return response()->json([
             'html' => view('upload', ['data' => $data])->render(),
