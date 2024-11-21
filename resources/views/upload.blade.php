@@ -3,7 +3,7 @@
         Project ID  {{ $project }}
     </div>
     <div>
-        <table>
+        <table class="table-fixed">
         <thead>
             <tr>
                 <th>Employee ID</th>
@@ -14,9 +14,9 @@
             <tbody>
                 @foreach($item as $employee)
                     <tr>
-                        <td>{{ $employee->EmpID }}</td>
-                        <td>{{ $employee->ProjectID }}</td>
-                        <td>{{ $employee->DeferenceInDays }}</td>
+                        <td>{{ $employee->employeeId }}</td>
+                        <td>{{ $employee->projectId }}</td>
+                        <td>{{ $employee->deferenceInDays }}</td>
                     </tr>
                 @endforeach
             </tbody>

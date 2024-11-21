@@ -6,25 +6,25 @@ use Carbon\Carbon;
 
 class Employee
 {
-    public int $EmpID;
-    public int $ProjectID;
-    public Carbon $DateFrom;
-    public Carbon $DateTo;
+    public int $employeeId;
+    public int $projectId;
+    public Carbon $dateFrom;
+    public Carbon $dateTo;
 
-    public float $DeferenceInDays;
+    public float $deferenceInDays;
 
-    public function __construct(string $EmpID, string $ProjectID, string $DateFrom, string $DateTo)
+    public function __construct(string $employeeId, string $projectId, string $dateFrom, string $dateTo)
     {
-        $this->EmpID = (int) $EmpID;
-        $this->ProjectID = (int) $ProjectID;
-        $this->DateFrom =  Carbon::parse(trim($DateFrom));
+        $this->employeeId = (int) $employeeId;
+        $this->projectId = (int) $projectId;
+        $this->dateFrom =  Carbon::parse(trim($dateFrom));
 
-        if (trim($DateTo) == null || trim($DateTo) == "NULL" || empty(trim($DateTo))) {
-            $this->DateTo = Carbon::today();
+        if (trim($dateTo) == null || trim($dateTo) == "NULL" || empty(trim($dateTo))) {
+            $this->dateTo = Carbon::today();
         } else {
-            $this->DateTo = Carbon::parse(trim($DateTo));
+            $this->dateTo = Carbon::parse(trim($dateTo));
         }
 
-        $this->DeferenceInDays = $this->DateFrom->diffInDays($this->DateTo);
+        $this->deferenceInDays = $this->dateFrom->diffInDays($this->dateTo);
     }
 }
